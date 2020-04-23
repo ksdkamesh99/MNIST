@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MNISt</title>
+
+    <!--Bootstrap styling-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+
+    <!-- Our Own Custom Style Sheet -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Libraries needed -->
+    <!-- jQuery library -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <!--Bootstrap library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div classs=" ll">
+        <div class="container-fluid">
+            <div classs="row">
+                <!--Canvas and results floated to left side of page-->
+                 <!--Canvas and results floated to left side of page-->
+                <div class="draw-area float-left col-5">
+                    <div class="centered ">
+                        <canvas id="canvas" width="280" height="280"></canvas>
+                    </div>
+                    <h1 class="instructions">Draw on the space above</h1>
+                    <div class="centered">
+                        <input type="button" class="myButton btn btn-outline-primary" value="Predict">
+                        <input type="button" id="clearButton" class="btn btn-outline-secondary" value="Clear">
+
+                        <div class="centered">
+                            <h1 id="result"></h1>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!--Profile and info on project floated to right of page-->
+                <div id="profile" class="profile col-5 float-right">
+                                      <br><br>   <br><br> 
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Number Recognition using Convulutional Nueral Networks</h4>
+                        <br/>
+                        <center><h1>About The DataSet</h1></center>
+    <h3>MNIST Database</h3>
+
+    <ul>   <li> <p>The MNIST database of handwritten digits, available from this page, has a training set of 60,000 examples, and a test set of 10,000 examples. It is a subset of a larger set available from MNIST. The digits have been size-normalized and centered in a fixed-size image. </p></li>
+              <img src="https://i2.wp.com/syncedreview.com/wp-content/uploads/2019/06/MNIST.png?fit=530%2C297&ssl=1">
+
+      <li><p>
+
+It is a good database for people who want to try learning techniques and pattern recognition methods on real-world data while spending minimal efforts on preprocessing and formatting.
+
+</p></li>
+<li><p>link to the database is <a href="http://yann.lecun.com/exdb/mnist/">here</a></p></li>
+</ul>
+    <br>
+    </div>
+                </div>
+            </div>
+            <div class="main-title">
+                <h1>Number Recognition</h1>
+            </div>
+        </div>
+
+        <!--Ajax call Adapted from https://github.com/sleepokay/mnist-flask-app-->
+        <script src="{{url_for('static',filename='jquery-3.2.0.min.js')}}"></script>
+      <script src="{{url_for('static',filename='index.js')}}"></script>
+      <script type="text/javascript">   
+        $(".myButton").click(function(){
+          $('#result').text('  Predicting...');
+          var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+          var canvasObj = document.getElementById("canvas");
+          var img = canvasObj.toDataURL('image/png');
+          $.ajax({
+            type: "POST",
+            url: $SCRIPT_ROOT + "/predict",
+            data: img,
+            success: function(data){
+              $('#result').text('Predicted Output: ' + data);
+            }
+          });
+        });
+     </script>
+
+</body>
+
+</html>

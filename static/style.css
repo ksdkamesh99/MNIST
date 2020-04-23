@@ -1,0 +1,95 @@
+
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300');
+
+html { 
+	height: 100%;
+    width=100%;
+}
+
+body {
+	background: #252830;
+}
+
+h1 {
+	position: relative;
+	top: 50;
+	text-align: center;
+	font-family: 'Open Sans', Helvetica;
+	background-color: transparent;
+	color: #807F7D;
+	font-size: 25px;
+	font-weight: 300;
+	z-index: -1;
+}
+
+#canvas {
+	position: relative;
+	border: 4px solid;
+	border-color: #435275;
+	background-color:white;
+	margin: auto;
+	margin-top: 160px;
+	cursor: pointer;
+	text-align: center;
+	box-shadow: 5px 5px 10px #555 inset;	
+}
+
+#img {
+	position: relative;
+	text-align: center;
+}
+
+#head {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50;
+}
+
+#result {
+	margin-top: 25px;
+	color: #2CA58D;
+}
+
+.centered {
+	position: relative;
+	text-align: center;
+}
+
+.instructions{
+	color: #5F5566
+}
+
+.profile{
+	position: relative;
+	right: 10%;
+}
+
+.profile div#profile{
+	background-color: #AEF6C7 !important;
+}
+
+.profile img {
+	opacity: 0.8;
+	width: 50%;
+	display: block;
+	margin: 0 auto;
+	margin-top: 25%;
+	margin-bottom: 5%;
+}
+
+.main-title h1{
+	font-weight: 600 ;
+	font-size: 2em;
+	color: #DDDBF1 !important;
+	text-align: auto;
+	position: relative;
+	top: 10;
+}
+
+.main-title{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 5%;
+}
