@@ -52,4 +52,4 @@ python app.py
 
 ## 📜 LICENSE
 
-[MIT](https://github.com/ksdkamesh99/MNIST/blob/master/LICENSE)
+[MIT](https://github.com/ksdkamesh99/MNIST/blob/master/LICENSE.md)
